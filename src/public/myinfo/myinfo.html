@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div ng-if = "info.user" >
+    <h3>You are registred as:</h3>
+    <br>
+    <div>First name: {{info.user.firstName}} </div>
+    <div>Last name: {{info.user.lastName}}</div>
+    <div>e-Mail: {{info.user.email}}</div>
+    <div>Phone: {{info.user.phone}}</div>
+    <div>Favorite Menu {{info.user.menu}}</div>
+
+    <menu-item
+               menu-item="info.menu_item">
+    </menu-item>
+
+  </div>
+
+
+<!-- Displayed when no info.user aviliable (not signed in) -->
+  <div ng-if = "!info.user">
+    <h3>Not Signed Up Yet. </h3>
+    <a ui-sref = "public.signup">Sign up Now!</a>
+  </div>
+
+</div>

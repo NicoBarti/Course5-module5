@@ -1,0 +1,102 @@
+<div class="container" >
+  <h3 >Register for our newsletter</h3><br>
+
+    <form name="signForm" id="form" novalidate>
+
+      <div>
+        <input type="text" name="firstName"
+        placeholder="First name"
+        ng-model="sign.user.firstName"
+        required
+        minlength="4"
+        maxlength="10"
+        >
+        <span id="form-alert">
+            <span ng-if = "signForm.firstName.$touched && signForm.firstName.$error.required" >
+              First Name is required
+            </span>
+            <span ng-if = "signForm.firstName.$touched && signForm.firstName.$error.minlength">
+              First Name should be longer (at least 4 chr)
+            </span>
+            <span ng-if = "signForm.firstName.$touched && signForm.firstName.$error.maxlength">
+              First Name should be shorter (10 max chr)
+            </span>
+        </span>
+      </div>
+      <br>
+
+      <div>
+      <input type="text" name="lastName"
+      placeholder="Last name"
+      ng-model='sign.user.lastName'
+      required
+      minlength="4"
+      maxlength="10">
+
+      <span id="form-alert">
+          <span ng-if = "signForm.lastName.$touched && signForm.lastName.$error.required" >
+            Last Name is required
+          </span>
+          <span ng-if = "signForm.lastName.$touched && signForm.lastName.$error.minlength">
+            Last Name should be longer (at least 4 chr)
+          </span>
+          <span ng-if = "signForm.lastName.$touched && signForm.lastName.$error.maxlength">
+            Last Name should be shorter (10 max chr)
+          </span>
+          <br>
+      </span>
+     </div>
+     <br>
+     <div>
+
+       <div>
+       <input type="email" name="email"
+       placeholder="email@addres"
+       ng-model='sign.user.email'
+       required>
+
+       <span id="form-alert">
+           <span ng-if = "(signForm.email.$touched && signForm.email.$error.required)" >
+             email is required
+           </span>
+           <span ng-if = "(signForm.email.$touched && signForm.email.$invalid) && !signForm.email.$error.required">
+             Must be a valid email address: handle@domain format
+           </span>
+           <br>
+       </span>
+       </div>
+
+      <input type="text" name="phone"
+      placeholder="Phone (optional)"
+      ng-model='sign.user.phone'
+      pattern="(\d{3})-(\d{3})-(\d{4})">
+
+      <span id="form-alert">
+          <span ng-if = "signForm.phone.$invalid" >
+            Phone format (###-###-####)
+          </span>
+      </span>
+    </div>
+    <br>
+    <div>
+      <input type="text" name="favoriteMenu"
+      placeholder="Favorite menu number"
+      ng-model='sign.user.menu'
+      required>
+
+      <span id="form-alert">
+        <span ng-if="sign.menu_invalid && !signForm.favoriteMenu.$error.required">No such menu number exists</span>
+        <span ng-if = "signForm.favoriteMenu.$touched && signForm.favoriteMenu.$error.required" >
+        Enter the Menu Number</span>
+      </span>
+      <div>
+      <br>
+
+      <button ng-click= 'sign.validate()'
+      ng-disabled="signForm.$invalid">Submit</button>
+
+      <br>
+      <span ng-if="sign.saved" id="form-alert">Your information has been saved, Thanks!</span>
+    </form>
+
+</div>
